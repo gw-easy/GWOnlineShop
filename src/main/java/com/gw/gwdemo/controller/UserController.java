@@ -1,6 +1,7 @@
 package com.gw.gwdemo.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.gw.gwdemo.dao.User;
 import com.gw.gwdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,13 @@ public class UserController {
     @RequestMapping("/findall")
     @ResponseBody
     public List<User>findAll(){
-        System.out.println(userS.findall());
+        List<User> userList = userS.findall();
+        //显示几个页号
+        PageInfo page = new PageInfo(userList,5);
+
+        /* model.addAttribute("pageInfo", page);*/
+
+        return Msg.success("查询成功!").add("pageInfo", page);
         return userS.findall();
     }
 }
