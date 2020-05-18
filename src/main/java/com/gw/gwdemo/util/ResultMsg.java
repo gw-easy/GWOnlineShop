@@ -6,20 +6,20 @@ import java.util.Map;
 public class ResultMsg {
     public static ResultMsg success(String msg) {
         ResultMsg result = new ResultMsg();
-        result.setResultCode(100);
+        result.setResultCode(0);
         result.setMessage(msg);
         return result;
     }
 
     public static ResultMsg fail(String msg) {
         ResultMsg result = new ResultMsg();
-        result.setResultCode(200);
+        result.setResultCode(1);
         result.setMessage(msg);
         return result;
     }
 
     public ResultMsg add(String key, Object value) {
-        this.getInfo().put(key, value);
+        this.getData().put(key, value);
         return this;
     }
 
@@ -42,17 +42,17 @@ public class ResultMsg {
         this.message = message;
     }
 
-    public Map<String, Object> getInfo() {
-        return info;
+    public Map<String, Object> getData() {
+        return data;
     }
 
-    public void setInfo(Map<String, Object> info) {
-        this.info = info;
+    public void setData(Map<String, Object> data) {
+        this.data = data;
     }
 
     //提示信息
     private String message;
 
     //数据
-    private Map<String, Object> info = new HashMap<String, Object>();
+    private Map<String, Object> data = new HashMap<String, Object>();
 }

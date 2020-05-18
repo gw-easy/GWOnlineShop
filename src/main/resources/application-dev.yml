@@ -1,5 +1,7 @@
 server:
   port: 8088
+  servlet:
+    context-path: /gw
   tomcat:
     uri-encoding: UTF-8
 spring:
@@ -15,3 +17,5 @@ spring:
     max-wait: 10000
   jpa:
     database: mysql
+  swagger:
+    enabled: true

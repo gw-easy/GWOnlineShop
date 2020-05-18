@@ -6,7 +6,7 @@
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
     </resultMap>
-    <select id="findAll" resultMap="userResultMap" parameterType="com.gw.gwdemo.dao.User">
+    <select id="findAllUser" resultMap="userResultMap" parameterType="com.gw.gwdemo.dao.User">
         SELECT * FROM `user`
     </select>
 </mapper>
