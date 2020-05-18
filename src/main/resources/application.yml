@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+
+mybatis:
+  #mapper.xml存放路径（resource）
+  mapper-locations: classpath:mapper/*.xml
+  #mapper接口文件存放路径
+  type-aliases-package: com.gw.gwdemo.mapper

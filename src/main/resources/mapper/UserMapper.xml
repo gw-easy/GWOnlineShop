@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gw.gwdemo.mapper.UserMapper">
+    <resultMap id="userResultMap" type="com.gw.gwdemo.dao.User">
+        <id column="userId" jdbcType="INTEGER" property="userId"></id>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="findAll" resultMap="userResultMap" parameterType="com.gw.gwdemo.dao.User">
+        SELECT * FROM `user`
+    </select>
+</mapper>
