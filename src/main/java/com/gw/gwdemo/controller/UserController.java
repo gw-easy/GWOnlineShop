@@ -1,10 +1,12 @@
 package com.gw.gwdemo.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.gw.gwdemo.entity.User;
 import com.gw.gwdemo.service.UserService;
 import com.gw.gwdemo.util.ResultMsg;
+import com.gw.gwdemo.util.page.PageRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.catalina.filters.ExpiresFilter;
@@ -14,6 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +33,9 @@ public class UserController {
     @ApiOperation("查找所有用户")
     @GetMapping("/findAllUser")
     @ResponseBody
-    public ResultMsg findAll(){
+    public ResultMsg findAll(HttpServletResponse response, HttpServletRequest request) {
+        System.out.println(request.getHeaderNames());
+        PageHelper.startPage(2,10);
         List<User> userList = userS.findAllUser();
 
         /* model.addAttribute("pageInfo", page);*/
@@ -37,7 +43,17 @@ public class UserController {
         return ResultMsg.success("查询成功!").add("userList", userList);
     }
 
+    @ApiOperation("查找所有用户")
+    @GetMapping("/testfindAll")
+    @ResponseBody
+    public ResultMsg testfindAll(HttpServletResponse response, HttpServletRequest request) {
+//        PageHelper.startPage(2,6);
+        List<User> userList = userS.findAllUser();
 
+        /* model.addAttribute("pageInfo", page);*/
+
+        return ResultMsg.success("查询成功!").add("userList", userList);
+    }
 
     @PostMapping("/findUser")
     @ResponseBody
@@ -73,4 +89,6 @@ public class UserController {
         userS.addUser(user);
         return ResultMsg.success("注册成功");
     }
+
+
 }
