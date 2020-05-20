@@ -1,16 +1,26 @@
-package com.gw.gwdemo.dao;
+package com.gw.gwdemo.entity;
 
 import java.util.Date;
 
 public class User {
-    private Integer userId;
+    private Integer userid;
 
-    public Integer getUserId() {
-        return userId;
+    private String username;
+
+    private String password;
+
+    private Date regtime;
+
+    private String email;
+
+    private String telephone;
+
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -18,7 +28,7 @@ public class User {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -26,7 +36,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
     public Date getRegtime() {
@@ -42,7 +52,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
     public String getTelephone() {
@@ -50,17 +60,6 @@ public class User {
     }
 
     public void setTelephone(String telephone) {
-        this.telephone = telephone;
+        this.telephone = telephone == null ? null : telephone.trim();
     }
-
-    private String username;
-
-    private String password;
-
-    private Date regtime;
-
-    private String email;
-
-    private String telephone;
 }
-
